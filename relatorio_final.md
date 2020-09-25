@@ -6,6 +6,7 @@
 **Vitor Augusto Alves de Jesus, vaajesus@sga.pucminas.br**
 
 **Professor: Hugo Bastos de Paula**
+
 ---
 
 _Curso de Engenharia de Software, Unidade Praça da Liberdade_
