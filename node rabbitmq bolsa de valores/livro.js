@@ -1,5 +1,5 @@
 const moment = require ('moment');
-const enviaTransacao = require('./bolsa_emit_log_topic.js')
+const enviaTransacao = require('./bolsa_publish.js')
 
 class Livro {
   constructor() {

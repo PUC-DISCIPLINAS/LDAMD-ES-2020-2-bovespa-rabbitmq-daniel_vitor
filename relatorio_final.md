@@ -1,32 +1,25 @@
-# TITULO DO PROJETO
+# Trabalho - Corretora de Valores com Rabbit MQ
 
 
-**Nome completo do Aluno 1, email do aluno 1**
+**Daniel Lyncon Gonçalves de Souza, daniel.lyncon@sga.pucminas.br**
 
-**Nome completo do Aluno 2, email do aluno 2**
-
-**Nome completo do Aluno 3, email do aluno 3**
+**Vitor Augusto Alves de Jesus, vaajesus@sga.pucminas.br**
 
 ---
 
-_Curso de Ciência da Computação, Unidade {Coração Eucarístico | Praça da Liberdade}_
+_Curso de Engenharia de Software, Unidade Praça da Liberdade_
 
 _Instituto de Informática e Ciências Exatas – Pontifícia Universidade de Minas Gerais (PUC MINAS), Belo Horizonte – MG – Brasil_
 
 ---
 
-_**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o trabalho, descrever seu objetivo e, ao final, 
-mostrar algum resultado relevante do trabalho (até 10 linhas)._
-
----
-
-
-
 **1. Introdução**
 
-A introdução deve apresentar de dois ou quatro parágrafos de contextualização do trabalho. 
+O Trabalho proposto tem como finalidade desenvolver uma aplicação que simule uma Bolsa de Valores por meio do Middleware 
+RabbitMQ utilizando as estruturas de comunicação indireta Publish/Subscribe e Topics. O servidor RabbitMQ é escrito na linguagem de programação Erlang construído com o framework Open Telecom Platform para clustering e failover. O código foi desenvolvido na linguagem JavaScript 
+utilizando o motor Node.js para gerenciar as bibliotecas externas responsáveis por manter a funcionalidade do Sistema pelo RabbitMQ. 
 
-Na **contextualização**, o aluno deve dizer do que se trata o trabalho, em que área ou contexto se insere. 
+<!-- Na **contextualização**, o aluno deve dizer do que se trata o trabalho, em que área ou contexto se insere. 
 A **contextualização** deve ser desenvolvida de algo mais genérico para algo mais específico. 
 A citação de pesquisas quantitativas é bem aceita aqui (corretamente referenciadas).
 
@@ -44,69 +37,29 @@ desenvolvimento do seu trabalho e caso deseje, desta-que alguma contribuição d
     1.2 Problema
     1.3 Objetivo geral
        1.3.1 Objetivos específicos
-    1.4 Justificativas
+    1.4 Justificativas -->
 
-**2. Projeto da Solução**
+**2. Projeto de desenvolvimento**
+O projeto consiste em 5 arquivos: bolsa_publish.js, bolsa_receiver.js, corretora_publish.js, corretora_subscribe e livro.js.
+O bolsa_receiver é responsável por instanciar o servidor da bolsa de valores criando um canal de comunicação com nome 'BOLSADEVALORES' para o qual corretoras podem publicar compra e venda de ativos. Além disso, é responsável por gerenciar o 'match' entre uma compra e uma venda sempre que o valor de uma ORDEM DE COMPRA for maior ou igual ao valor de uma ORDEM DE VENDA para um mesmo ativo, a bolsa de valores gera uma mensagem do tipo TRANSACAO no tópico referente a compra/venda, e atualiza as ordens da fila em conjunto com o livro.js. Já o bolsa_publish é responsável por notificar as correteras inscritas no tópico de cada ativo seja de compra ou venda.
 
-    2.1. Requisitos funcionais
-	
-Enumere os requisitos funcionais previstos para a sua aplicação. 
-Use a tabela abaixo para enumerá-lo.  Esses requisitos devem estar 
-de acordo com as definições do modelo de negócio.
+No arquivo corretora_publish é desempenhado o papel de enviar a bolsa de valores uma ordem de compra/venda de ativos utilizando a exchange do tipo topic. Enquanto no arquivo corretora_subscribe.js realiza a inscrição nos ativos que determinada corretora tem interesse em monitorar por meio de exchange do tipo pub/sub. 
 
-| No.           | Descrição                       | Prioridade |
-| ------------- |:-------------------------------:| ----------:|
-| {número       | Descrição resumida do requisito | {Alta      |
-| sequencial    |                                 |  média     |
-| identificador |                                 |  ou baixa  | 
-
-    2.2. Tecnologias
-
-Descreva qual(is) tecnologias você vai usar para resolver o seu problema, ou seja implementar a sua solução. 
-Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, 
-IDEs de desenvolvimento, e ferramentas.  Apresente também uma figura explicando como as tecnologias estão 
-relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até 
-retornar uma resposta ao usuário. 
-
-    2.3. Serviços inteligentes
-
-Descreva o mecanismo de inteligência que será utilizado no seu sistema. Utilize a modelagem baseada em agente
-para definir as entradas e saídas do seu módulo de serviço inteligente. Apresente quem irá fornecer o serviço
-e em que módulo será utilizado.
 
 	
 **3. Modelagem de dados**
 
-Apresente o modelo de dados. Defina o dicionário de dados com os respectivos formatos e significados.
+Foi desenvolvido o seguinte diagrama de componentes para ilustrar a arquitetura da solução:
 
-    3.1. Diagrama de Entidade-Relacionamento
+/*
+    TO-DO
+*/
 
-Apresente a estrutura das tabelas de banco de dados no modelo Diagrama de Entidade-Relacionamento.
-
-**4. Sistema desenvolvido**
-
-Faça aqui uma breve descrição do software e coloque as principais telas com uma explicação de como usar cada uma.
 
 **5. Avaliação**
 
-Faça aqui sobre a avaliação do software. Indique se ele atendeu as expectativas e ele é viável. 
-Para não ficar subjetivo, o ideal é fazer um questionário e pedir ao usuário do processo que faça a avaliação.
+A princípio o programa foi desenvolvido sem uma interface gráfica. Porém a partir da chamada via terminal em computadores diferentes, a comunicação foi devidamente estabelecida utilizando o RabbiMQ como MOM. Por exemplo, um computador roda o comando bolsa_.receiver.js para 'escutar' publicações de outros computadores que rodariam o comando corretora_publish.
 
 **6. Conclusão**
 
-Apresente aqui a conclusão do seu trabalho. Discussão dos resultados obtidos no trabalho, onde se verifica as 
-observações pessoais de cada aluno. Poderá também apresentar sugestões de novas linhas de estudo.  
-
-
-**REFERÊNCIAS**
-
-
-**[1.1]** - _ELMASRI, Ramez; NAVATHE, Sham. **Sistemas de banco de dados**. 7. ed. São Paulo: Pearson, c2019. E-book. ISBN 9788543025001._
-
-**[1.2]** - _COPPIN, Ben. **Inteligência artificial**. Rio de Janeiro, RJ: LTC, c2010. E-book. ISBN 978-85-216-2936-8._
-
-**[1.3]** - _CORMEN, Thomas H. et al. **Algoritmos: teoria e prática**. Rio de Janeiro, RJ: Elsevier, Campus, c2012. xvi, 926 p. ISBN 9788535236996._
-
-**[1.4]** - _SUTHERLAND, Jeffrey Victor. **Scrum: a arte de fazer o dobro do trabalho na metade do tempo**. 2. ed. rev. São Paulo, SP: Leya, 2016. 236, [4] p. ISBN 9788544104514._
-
-**[1.5]** - _RUSSELL, Stuart J.; NORVIG, Peter. **Inteligência artificial**. Rio de Janeiro: Elsevier, c2013. xxi, 988 p. ISBN 9788535237016._
+A partir do trabalho desenvolvido, pôde-se concluir que o middleware RabbitMQ de fato pode ser utilizado em aplicações que necessitam de comunicação indireta. Além disso, possibilita ao desenvolvedor escolher qual tipo de exchange irá utilizar em seu projeto fornecendo rica documentação para consulta.
