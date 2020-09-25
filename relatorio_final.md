@@ -51,9 +51,7 @@ No arquivo corretora_publish é desempenhado o papel de enviar a bolsa de valore
 
 Foi desenvolvido o seguinte diagrama de componentes para ilustrar a arquitetura da solução:
 
-/*
-    TO-DO
-*/
+![Diagrama de Componentes](img/Diagrama_de_Componentes.png)
 
 
 **5. Avaliação**
