@@ -12,7 +12,7 @@ Após isso deve executar o comando para iniciar o node modules:
 $ npm start 
 ~~~~
 
-Para inciciar o recebimento dos tópicos deve-se executar o seguinte comando:
+Para iniciar o recebimento dos tópicos deve-se executar o seguinte comando:
 ~~~javascript
 $ node bolsa_receiver '#'
 ~~~~
