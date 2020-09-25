@@ -2,12 +2,24 @@
 
 ## Iniciando o projeto 
 
-Para iniciar o projeto executar o seguinte comando
-
+Para iniciar o projeto deveremos instalar node modules utilizando o seguinte comando:
 ~~~javascript
-
-$ npm install && npm start
-
-$ node./
-
+$ npm install 
 ~~~~
+
+Após isso deve executar o comando para iniciar o node modules:
+~~~javascript
+$ npm start 
+~~~~
+
+Para inciciar o recebimento dos tópicos deve-se executar o seguinte comando:
+~~~javascript
+$ node bolsa_receiver '#'
+~~~~
+
+Para inciciar consumir determinado tópico rodar o comando:
+~~~javascript
+$ node corretora_subscribe "TOPIC.ATIVO"
+~~~~
+
+
